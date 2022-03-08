@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)"
-options: "9a1a92567da5ba281853eeb8aa848932366c22d4c906cd6a3183548b7eafb970"
-build_start_time: [1646669697, 157546043]
-build_end_time: [1646669702, 217676162]
-inputs:
-  "/Users/nathpay/Documents/theTribe/formation_flutter/macos/Flutter/GeneratedPluginRegistrant.swift": [1646669674, 478161811]
-  "/Users/nathpay/Documents/theTribe/formation_flutter/macos/Runner/AppDelegate.swift": [1643904689, 0]
-  "/Users/nathpay/Documents/theTribe/formation_flutter/macos/Runner/MainFlutterWindow.swift": [1643904689, 0]
