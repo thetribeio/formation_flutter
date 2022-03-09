@@ -31,8 +31,8 @@ class PokemonPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Container(
-              color: Colors.amber,
+            Image(
+              image: NetworkImage(sprite),
               height: 128,
               width: 128,
             ),
