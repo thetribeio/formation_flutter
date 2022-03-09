@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class PokemonPage extends StatelessWidget {
   final String pokemonName;
-  final String id;
+  final int id;
   final String sprite;
   final String type1;
   final String? type2;
