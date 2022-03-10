@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/state_bar_chart.dart';
 
 class PokemonPage extends StatelessWidget {
   final String pokemonName;
@@ -64,6 +65,14 @@ class PokemonPage extends StatelessWidget {
               ],
             ),
             const Spacer(),
+            Container(
+              height: 200,
+              child: Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                color: Colors.grey,
+                child:  StateBarChart(id: id,) ,
+              ),
+            ),
           ],
         ),
       ),

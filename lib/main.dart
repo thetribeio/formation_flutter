@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formation_flutter/pokemon_page/pokemon_page.dart';
-import 'pokemon_info.dart';
+import 'models/pokemon_info.dart';
 
 void main() {
   runApp(MyApp());
@@ -78,3 +78,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
