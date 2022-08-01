@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:formation_flutter/model/pokemon.dart';
+import 'package:formation_flutter/pokemon_page/pokemon_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,17 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Pokedex"),
         ),
-        body: const Center(),
+        body: PokemonPage(
+          pokemon: Pokemon(
+            id: 1,
+            name: "pokemonName",
+            sprite: "sprite",
+            type1: "type1",
+            type2: "type2",
+            weight: "weight",
+            height: "height",
+          ),
+        ),
       ),
     );
   }
