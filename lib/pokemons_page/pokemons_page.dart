@@ -86,16 +86,26 @@ const List<Pokemon> pokemons = [
   ),
 ];
 
-/// Écran affichant le nombre de [Pokemon] connus.
+/// Écran affichant tous les [Pokemon] connus.
 ///
-/// TODO : modifier cet écran pour qu'il affiche la liste des [Pokemon].
 class PokemonsPage extends StatelessWidget {
   const PokemonsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Il y a ${pokemons.length} Pokemons."),
+    return ListView.builder(
+      itemCount: pokemons.length,
+      itemBuilder: (BuildContext context, int index) {
+        final pokemon = pokemons[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            tileColor: Colors.grey,
+            title: Text(pokemon.name),
+            subtitle: Text("#${pokemon.id}"),
+          ),
+        );
+      },
     );
   }
 }
