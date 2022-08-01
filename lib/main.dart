@@ -21,13 +21,13 @@ class MyApp extends StatelessWidget {
         ),
         body: PokemonPage(
           pokemon: Pokemon(
-            name: "pokemonName",
             id: 1,
+            name: "Bulbizarre",
             sprite: "sprite",
-            type1: "type1",
-            type2: "type2",
-            weight: "weight",
-            height: "height",
+            type1: "Plante",
+            type2: "Poison",
+            weight: 6.9,
+            height: 0.7,
           ),
         ),
       ),

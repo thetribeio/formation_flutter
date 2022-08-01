@@ -1,11 +1,11 @@
 class Pokemon {
-  final String name;
   final int id;
+  final String name;
   final String sprite;
   final String type1;
   final String? type2;
-  final String weight;
-  final String height;
+  final double weight;
+  final double height;
 
   Pokemon({
     required this.id,
