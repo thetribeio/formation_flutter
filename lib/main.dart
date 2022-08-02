@@ -11,46 +11,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: ThemeMode.light,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Colors.red,
-          secondary: Colors.blue[900],
-          background: const Color.fromARGB(255, 228, 228, 228),
-          surface: Colors.grey[100],
-          onBackground: Colors.grey[900],
-          onPrimary: Colors.black,
-          onSecondary: Colors.white,
-          onSurface: Colors.black,
+        colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.light,
+          seedColor: Colors.red,
         ),
       ),
-      darkTheme: ThemeData.from(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Colors.red,
-          secondary: Colors.blue[900],
-          background: const Color.fromARGB(255, 41, 41, 41),
-          surface: Colors.grey[800],
-          onBackground: Colors.white,
-          onPrimary: Colors.white,
-          onSecondary: Colors.white,
-          onSurface: Colors.white,
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.dark,
+          seedColor: Colors.red,
         ),
       ),
-      themeMode: ThemeMode.dark,
+
       // Composant principal de flutter, permet d'accéder à tous les autres composants du SDK Flutter
-      home: Scaffold(
-        //La classe Scaffold est un widget extensible qui remplit l'espace disponible et fournit les principaux widgets
-        appBar: AppBar(
-          title: Align(
-            child: Text(
-              "Pokedex",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
-            ),
-          ),
-        ),
-        body: const PokemonsPage(),
-      ),
+      home: const PokemonsPage(),
     );
   }
 }

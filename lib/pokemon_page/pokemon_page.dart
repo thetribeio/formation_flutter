@@ -34,9 +34,6 @@ class PokemonPage extends StatelessWidget {
             ),
             Text(
               "#${pokemon.id}",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
             ),
             const SizedBox(
               height: 8,
@@ -47,17 +44,11 @@ class PokemonPage extends StatelessWidget {
                 const Spacer(),
                 Text(
                   pokemon.type1,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
                 ),
                 const Spacer(),
                 if (pokemon.type2 != null)
                   Text(
                     pokemon.type2!,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
                   ),
                 if (pokemon.type2 != null) const Spacer(),
               ],
@@ -68,16 +59,10 @@ class PokemonPage extends StatelessWidget {
                 const Spacer(),
                 Text(
                   "${pokemon.weight} Kg",
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
                 ),
                 const Spacer(),
                 Text(
                   "${pokemon.height} m",
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
                 ),
                 const Spacer(),
               ],
