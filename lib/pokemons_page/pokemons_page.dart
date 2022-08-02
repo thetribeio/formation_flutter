@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:formation_flutter/model/pokemon.dart';
 
@@ -103,6 +105,10 @@ class PokemonsPage extends StatelessWidget {
             tileColor: Colors.grey,
             title: Text(pokemon.name),
             subtitle: Text("#${pokemon.id}"),
+            onTap: () {
+              log("On a tap sur le pokemon ${pokemon.id}");
+              // Mettre la navigation ici
+            },
           ),
         );
       },
