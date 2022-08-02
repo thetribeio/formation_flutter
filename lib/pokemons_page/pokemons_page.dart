@@ -94,27 +94,36 @@ class PokemonsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: pokemons.length,
-      itemBuilder: (BuildContext context, int index) {
-        final pokemon = pokemons[index];
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListTile(
-            tileColor: Colors.grey,
-            title: Text(pokemon.name),
-            subtitle: Text("#${pokemon.id}"),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => PokemonPage(
-                  pokemon: pokemon,
+    return Scaffold(
+      //La classe Scaffold est un widget extensible qui remplit l'espace disponible et fournit les principaux widgets
+      appBar: AppBar(
+        title: const Align(
+          child: Text("Pokedex"),
+        ),
+        backgroundColor: Colors.red,
+      ),
+      body: ListView.builder(
+        itemCount: pokemons.length,
+        itemBuilder: (BuildContext context, int index) {
+          final pokemon = pokemons[index];
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              tileColor: Colors.grey,
+              title: Text(pokemon.name),
+              subtitle: Text("#${pokemon.id}"),
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PokemonPage(
+                    pokemon: pokemon,
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

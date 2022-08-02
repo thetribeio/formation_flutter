@@ -11,18 +11,9 @@ class MyApp extends StatelessWidget {
   //Ce widget est la racine de votre application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       // Composant principal de flutter, permet d'accéder à tous les autres composants du SDK Flutter
-      home: Scaffold(
-        //La classe Scaffold est un widget extensible qui remplit l'espace disponible et fournit les principaux widgets
-        appBar: AppBar(
-          title: const Align(
-            child: Text("Pokedex"),
-          ),
-          backgroundColor: Colors.red,
-        ),
-        body: const PokemonsPage(),
-      ),
+      home: PokemonsPage(),
     );
   }
 }
