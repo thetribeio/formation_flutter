@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:formation_flutter/model/pokemon.dart';
+
+/// Un écran affichant les informations au sujet
+/// d'un [Pokemon]
 class PokemonPage extends StatelessWidget {
-  final String pokemonName;
-  final int id;
-  final String sprite;
-  final String type1;
-  final String? type2;
-  final String weight;
-  final String height;
+  final Pokemon pokemon;
+
   const PokemonPage({
     Key? key,
-    required this.pokemonName,
-    required this.id,
-    required this.sprite,
-    required this.type1,
-    this.type2,
-    required this.weight,
-    required this.height,
+    required this.pokemon,
   }) : super(key: key);
 
   @override
@@ -24,7 +17,7 @@ class PokemonPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          pokemonName,
+          pokemon.name,
         ),
       ),
       body: Padding(
@@ -40,7 +33,7 @@ class PokemonPage extends StatelessWidget {
               height: 8,
             ),
             Text(
-              "#$id",
+              "#${pokemon.id}",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onBackground,
               ),
@@ -53,20 +46,20 @@ class PokemonPage extends StatelessWidget {
               children: [
                 const Spacer(),
                 Text(
-                  type1,
+                  pokemon.type1,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
                 ),
                 const Spacer(),
-                if (type2 != null)
+                if (pokemon.type2 != null)
                   Text(
-                    type2!,
+                    pokemon.type2!,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
-                if (type2 != null) const Spacer(),
+                if (pokemon.type2 != null) const Spacer(),
               ],
             ),
             const Spacer(),
@@ -74,14 +67,14 @@ class PokemonPage extends StatelessWidget {
               children: [
                 const Spacer(),
                 Text(
-                  "$weight Kg",
+                  "${pokemon.weight} Kg",
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
                 ),
                 const Spacer(),
                 Text(
-                  "$height m",
+                  "${pokemon.height} m",
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
