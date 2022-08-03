@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 import 'widgets/state_bar_chart.dart';
 
+import 'package:formation_flutter/model/pokemon.dart';
+
+/// Un écran affichant les informations au sujet
+/// d'un [Pokemon]
 class PokemonPage extends StatelessWidget {
-  final String pokemonName;
-  final int id;
-  final String sprite;
-  final String type1;
-  final String? type2;
-  final String weight;
-  final String height;
+  final Pokemon pokemon;
+
   const PokemonPage({
     Key? key,
-    required this.pokemonName,
-    required this.id,
-    required this.sprite,
-    required this.type1,
-    this.type2,
-    required this.weight,
-    required this.height,
+    required this.pokemon,
   }) : super(key: key);
 
   @override
@@ -25,55 +18,70 @@ class PokemonPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          pokemonName,
+          pokemon.name,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Image(
-              image: NetworkImage(sprite),
-              height: 128,
-              width: 128,
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text("#$id"),
-            const SizedBox(
-              height: 8,
-            ),
-            const Spacer(),
-            Row(
-              children: [
-                const Spacer(),
-                Text(type1),
-                const Spacer(),
-                if (type2 != null) Text(type2!),
-                if (type2 != null) const Spacer(),
-              ],
-            ),
-            const Spacer(),
-            Row(
-              children: [
-                const Spacer(),
-                Text("$weight Kg"),
-                const Spacer(),
-                Text("$height m"),
-                const Spacer(),
-              ],
-            ),
-            const Spacer(),
-            Container(
-              height: 200,
-              child: Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-                color: Colors.grey,
-                child:  StateBarChart(id: id,) ,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              // On affiche ici l'image disponible à l'URL [pokemon.sprite]
+              // [NetworkImage] se charge de télécharger l'image.
+              Image(
+                image: NetworkImage(pokemon.sprite),
+                height: 128,
+                width: 128,
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                "#${pokemon.id}",
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const Spacer(),
+              Row(
+                children: [
+                  const Spacer(),
+                  Text(
+                    pokemon.type1,
+                  ),
+                  const Spacer(),
+                  if (pokemon.type2 != null)
+                    Text(
+                      pokemon.type2!,
+                    ),
+                  if (pokemon.type2 != null) const Spacer(),
+                ],
+              ),
+              const Spacer(),
+              Row(
+                children: [
+                  const Spacer(),
+                  Text(
+                    "${pokemon.weight} Kg",
+                  ),
+                  const Spacer(),
+                  Text(
+                    "${pokemon.height} m",
+                  ),
+                  const Spacer(),
+                ],
+              ),
+              const Spacer(),
+              SizedBox(
+                height: 200,
+                child: Card(
+                  child: StateBarChart(
+                    stats: pokemon.stats,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
