@@ -24,12 +24,12 @@ class PokemonPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // On affiche ici l'image disponible à l'URL [pokemon.sprite]
-            // [NetworkImage] se charge de télécharger l'image.
-            Image(
-              image: NetworkImage(pokemon.sprite),
-              height: 128,
+            // TODO : remplacer le [Placeholder] par l'affichage de l'image
+            // présente sur internet à l'URL [pokemon.sprite]
+            const SizedBox(
               width: 128,
+              height: 128,
+              child: Placeholder(),
             ),
             const SizedBox(
               height: 8,

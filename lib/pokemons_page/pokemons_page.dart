@@ -101,14 +101,12 @@ class PokemonsPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              // On affiche ici l'image disponible dans les assets de l'application
-              // [AssetImage] se charge de décoder l'image.
-              Image(
-                image: AssetImage(
-                  'assets/images/pokeball.png',
-                ),
-                fit: BoxFit.contain,
+              // TODO : remplacer le [Placeholder] par l'affichage de l'image
+              // présente dans les assets au chemin 'assets/images/pokeball.png'
+              SizedBox(
+                width: 32,
                 height: 32,
+                child: Placeholder(),
               ),
               Text('Pokedex'),
             ],
@@ -122,10 +120,12 @@ class PokemonsPage extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              // On affiche ici l'image disponible à l'URL [pokemon.sprite]
-              // [NetworkImage] se charge de télécharger l'image.
-              leading: Image(
-                image: NetworkImage(pokemon.sprite),
+              // TODO : remplacer le [Placeholder] par l'affichage de l'image
+              // présente sur internet à l'URL [pokemon.sprite]
+              leading: const SizedBox(
+                height: 32,
+                width: 32,
+                child: Placeholder(),
               ),
               tileColor: Theme.of(context).cardColor,
               title: Text(
