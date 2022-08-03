@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'widgets/state_bar_chart.dart';
 
 import 'package:formation_flutter/model/pokemon.dart';
 
@@ -72,12 +71,11 @@ class PokemonPage extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              SizedBox(
+              const SizedBox(
                 height: 200,
                 child: Card(
-                  child: StateBarChart(
-                    stats: pokemon.stats,
-                  ),
+                  //TODO : Remplacer le Placeholder par un graphe de fl_chart
+                  child: Placeholder(),
                 ),
               ),
             ],
