@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:formation_flutter/model/pokemon_stats.dart';
 
-class StateBarChart extends StatelessWidget {
+class StateBarChart extends StatefulWidget {
   final PokemonStats stats;
   const StateBarChart({
     Key? key,
@@ -10,24 +10,59 @@ class StateBarChart extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<StateBarChart> createState() => _StateBarChartState();
+}
+
+class _StateBarChartState extends State<StateBarChart> {
+  double? _selectedValue;
+
+  @override
   Widget build(BuildContext context) {
-    return BarChart(
-      BarChartData(
-        barTouchData: barTouchData,
-        titlesData: titlesData,
-        borderData: borderData,
-        barGroups: barGroups,
-        alignment: BarChartAlignment.spaceAround,
-        gridData: FlGridData(
-          show: false,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (_selectedValue != null)
+          Text("Valeur sélectionnée : $_selectedValue"),
+        SizedBox(
+          height: 200,
+          child: BarChart(
+            BarChartData(
+              barTouchData: barTouchData,
+              titlesData: titlesData,
+              borderData: borderData,
+              barGroups: barGroups,
+              alignment: BarChartAlignment.spaceAround,
+              gridData: FlGridData(
+                show: false,
+              ),
+              maxY: 130,
+            ),
+          ),
         ),
-        maxY: 130,
-      ),
+      ],
     );
+  }
+
+  void didSelectBar({
+    required double value,
+  }) {
+    setState(() {
+      _selectedValue = value;
+    });
   }
 
   BarTouchData get barTouchData => BarTouchData(
         enabled: false,
+        touchCallback: (event, barTouchResponse) {
+          if (!event.isInterestedForInteractions ||
+              barTouchResponse?.spot == null) {
+            return;
+          }
+
+          didSelectBar(
+            value: barTouchResponse!.spot!.touchedRodData.y,
+          );
+        },
         touchTooltipData: BarTouchTooltipData(
           tooltipBgColor: Colors.transparent,
           tooltipPadding: const EdgeInsets.all(0),
@@ -92,7 +127,7 @@ class StateBarChart extends StatelessWidget {
           x: 0,
           barRods: [
             BarChartRodData(
-              y: stats.pv,
+              y: widget.stats.pv,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -102,7 +137,7 @@ class StateBarChart extends StatelessWidget {
           x: 1,
           barRods: [
             BarChartRodData(
-              y: stats.attack,
+              y: widget.stats.attack,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -112,7 +147,7 @@ class StateBarChart extends StatelessWidget {
           x: 2,
           barRods: [
             BarChartRodData(
-              y: stats.defense,
+              y: widget.stats.defense,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -122,7 +157,7 @@ class StateBarChart extends StatelessWidget {
           x: 3,
           barRods: [
             BarChartRodData(
-              y: stats.attacksp,
+              y: widget.stats.attacksp,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -132,7 +167,7 @@ class StateBarChart extends StatelessWidget {
           x: 4,
           barRods: [
             BarChartRodData(
-              y: stats.defensesp,
+              y: widget.stats.defensesp,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -142,7 +177,7 @@ class StateBarChart extends StatelessWidget {
           x: 5,
           barRods: [
             BarChartRodData(
-              y: stats.speed,
+              y: widget.stats.speed,
               colors: [Colors.red, Colors.grey],
             ),
           ],

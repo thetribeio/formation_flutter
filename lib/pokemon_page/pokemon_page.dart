@@ -72,12 +72,9 @@ class PokemonPage extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              SizedBox(
-                height: 200,
-                child: Card(
-                  child: StateBarChart(
-                    stats: pokemon.stats,
-                  ),
+              Card(
+                child: StateBarChart(
+                  stats: pokemon.stats,
                 ),
               ),
             ],
