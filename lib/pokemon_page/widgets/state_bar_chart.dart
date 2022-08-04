@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:formation_flutter/model/pokemon_stats.dart';
 
-class StateBarChart extends StatefulWidget {
+//TODO Transformer ce widget en StatefulWidget
+class StateBarChart extends StatelessWidget {
   final PokemonStats stats;
   const StateBarChart({
     Key? key,
@@ -10,19 +11,13 @@ class StateBarChart extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<StateBarChart> createState() => _StateBarChartState();
-}
-
-class _StateBarChartState extends State<StateBarChart> {
-  double? _selectedValue;
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (_selectedValue != null)
-          Text("Valeur sélectionnée : $_selectedValue"),
+        const Text(
+          "Valeur sélectionnée : 12", // TODO Remplacer 12 par une valeur du State
+        ),
         SizedBox(
           height: 200,
           child: BarChart(
@@ -46,9 +41,7 @@ class _StateBarChartState extends State<StateBarChart> {
   void didSelectBar({
     required double value,
   }) {
-    setState(() {
-      _selectedValue = value;
-    });
+    // TODO Mettre à jour la valeur affichée dans le Text
   }
 
   BarTouchData get barTouchData => BarTouchData(
@@ -127,7 +120,7 @@ class _StateBarChartState extends State<StateBarChart> {
           x: 0,
           barRods: [
             BarChartRodData(
-              y: widget.stats.pv,
+              y: stats.pv,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -137,7 +130,7 @@ class _StateBarChartState extends State<StateBarChart> {
           x: 1,
           barRods: [
             BarChartRodData(
-              y: widget.stats.attack,
+              y: stats.attack,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -147,7 +140,7 @@ class _StateBarChartState extends State<StateBarChart> {
           x: 2,
           barRods: [
             BarChartRodData(
-              y: widget.stats.defense,
+              y: stats.defense,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -157,7 +150,7 @@ class _StateBarChartState extends State<StateBarChart> {
           x: 3,
           barRods: [
             BarChartRodData(
-              y: widget.stats.attacksp,
+              y: stats.attacksp,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -167,7 +160,7 @@ class _StateBarChartState extends State<StateBarChart> {
           x: 4,
           barRods: [
             BarChartRodData(
-              y: widget.stats.defensesp,
+              y: stats.defensesp,
               colors: [Colors.red, Colors.grey],
             ),
           ],
@@ -177,7 +170,7 @@ class _StateBarChartState extends State<StateBarChart> {
           x: 5,
           barRods: [
             BarChartRodData(
-              y: widget.stats.speed,
+              y: stats.speed,
               colors: [Colors.red, Colors.grey],
             ),
           ],
