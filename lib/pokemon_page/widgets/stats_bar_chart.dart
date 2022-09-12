@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:formation_flutter/model/pokemon_stats.dart';
 
-class StateBarChart extends StatelessWidget {
+class StatsBarChart extends StatelessWidget {
   final PokemonStats stats;
-  const StateBarChart({
+  const StatsBarChart({
     Key? key,
     required this.stats,
   }) : super(key: key);
@@ -13,9 +13,9 @@ class StateBarChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return BarChart(
       BarChartData(
-        barTouchData: barTouchData,
-        titlesData: titlesData,
-        borderData: borderData,
+        // barTouchData: barTouchData,
+        // titlesData: titlesData,
+        // borderData: borderData,
         barGroups: barGroups,
         alignment: BarChartAlignment.spaceAround,
         gridData: FlGridData(
