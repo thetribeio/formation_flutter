@@ -12,13 +12,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.light,
-      theme: ThemeData.from(
+      theme: ThemeData(
+        fontFamily: 'RobotoMono',
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.light,
           seedColor: Colors.red,
         ),
       ),
-      darkTheme: ThemeData.from(
+      darkTheme: ThemeData(
+        fontFamily: 'RobotoMono',
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.dark,
           seedColor: Colors.red,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'widgets/state_bar_chart.dart';
-
 import 'package:formation_flutter/model/pokemon.dart';
 
 /// Un écran affichant les informations au sujet
