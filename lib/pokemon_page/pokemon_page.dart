@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/state_bar_chart.dart';
+import 'widgets/stats_bar_chart.dart';
 import 'package:formation_flutter/model/pokemon.dart';
 
 /// Un écran affichant les informations au sujet
@@ -72,7 +72,7 @@ class PokemonPage extends StatelessWidget {
               ),
               const Spacer(),
               Card(
-                child: StateBarChart(
+                child: StatsBarChart(
                   stats: pokemon.stats,
                 ),
               ),
