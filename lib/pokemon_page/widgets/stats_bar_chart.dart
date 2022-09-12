@@ -13,9 +13,9 @@ class StatsBarChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return BarChart(
       BarChartData(
-        // barTouchData: barTouchData,
-        // titlesData: titlesData,
-        // borderData: borderData,
+        barTouchData: barTouchData,
+        titlesData: titlesData,
+        borderData: borderData,
         barGroups: barGroups,
         alignment: BarChartAlignment.spaceAround,
         gridData: FlGridData(
@@ -39,7 +39,7 @@ class StatsBarChart extends StatelessWidget {
             int rodIndex,
           ) {
             return BarTooltipItem(
-              rod.y.round().toString(),
+              rod.toY.round().toString(),
               const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.normal,
@@ -50,37 +50,33 @@ class StatsBarChart extends StatelessWidget {
       );
 
   FlTitlesData get titlesData => FlTitlesData(
-        show: true,
-        bottomTitles: SideTitles(
-          showTitles: true,
-          getTextStyles: (context, value) => const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.normal,
-            fontSize: 14,
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            reservedSize: 40,
+            showTitles: true,
+            getTitlesWidget: (value, titleMeta) {
+              switch (value.toInt()) {
+                case 0:
+                  return const StatsBarChartTitle(text: 'PV');
+                case 1:
+                  return const StatsBarChartTitle(text: 'Atq');
+                case 2:
+                  return const StatsBarChartTitle(text: 'Déf');
+                case 3:
+                  return const StatsBarChartTitle(text: 'Atq S.');
+                case 4:
+                  return const StatsBarChartTitle(text: 'Déf S.');
+                case 5:
+                  return const StatsBarChartTitle(text: 'Vitesse');
+                default:
+                  return const StatsBarChartTitle(text: '');
+              }
+            },
           ),
-          margin: 5,
-          getTitles: (double value) {
-            switch (value.toInt()) {
-              case 0:
-                return 'PV';
-              case 1:
-                return 'Atq';
-              case 2:
-                return 'Déf';
-              case 3:
-                return 'Atq spé';
-              case 4:
-                return 'Déf spé';
-              case 5:
-                return 'Vitesse';
-              default:
-                return '';
-            }
-          },
         ),
-        leftTitles: SideTitles(showTitles: false),
-        topTitles: SideTitles(showTitles: false),
-        rightTitles: SideTitles(showTitles: false),
+        leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
       );
 
   FlBorderData get borderData => FlBorderData(
@@ -88,65 +84,72 @@ class StatsBarChart extends StatelessWidget {
       );
 
   List<BarChartGroupData> get barGroups => [
-        BarChartGroupData(
+        StatsBarChartGroupData(
           x: 0,
-          barRods: [
-            BarChartRodData(
-              y: stats.pv,
-              colors: [Colors.red, Colors.grey],
-            ),
-          ],
-          showingTooltipIndicators: [0],
+          y: stats.pv,
         ),
-        BarChartGroupData(
+        StatsBarChartGroupData(
           x: 1,
-          barRods: [
-            BarChartRodData(
-              y: stats.attack,
-              colors: [Colors.red, Colors.grey],
-            ),
-          ],
-          showingTooltipIndicators: [0],
+          y: stats.attack,
         ),
-        BarChartGroupData(
+        StatsBarChartGroupData(
           x: 2,
-          barRods: [
-            BarChartRodData(
-              y: stats.defense,
-              colors: [Colors.red, Colors.grey],
-            ),
-          ],
-          showingTooltipIndicators: [0],
+          y: stats.defense,
         ),
-        BarChartGroupData(
+        StatsBarChartGroupData(
           x: 3,
-          barRods: [
-            BarChartRodData(
-              y: stats.attacksp,
-              colors: [Colors.red, Colors.grey],
-            ),
-          ],
-          showingTooltipIndicators: [0],
+          y: stats.attacksp,
         ),
-        BarChartGroupData(
+        StatsBarChartGroupData(
           x: 4,
-          barRods: [
-            BarChartRodData(
-              y: stats.defensesp,
-              colors: [Colors.red, Colors.grey],
-            ),
-          ],
-          showingTooltipIndicators: [0],
+          y: stats.defensesp,
         ),
-        BarChartGroupData(
+        StatsBarChartGroupData(
           x: 5,
-          barRods: [
-            BarChartRodData(
-              y: stats.speed,
-              colors: [Colors.red, Colors.grey],
-            ),
-          ],
-          showingTooltipIndicators: [0],
+          y: stats.speed,
         ),
       ];
+}
+
+class StatsBarChartTitle extends StatelessWidget {
+  final String text;
+
+  const StatsBarChartTitle({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+        ),
+      ),
+    );
+  }
+}
+
+class StatsBarChartGroupData extends BarChartGroupData {
+  StatsBarChartGroupData({
+    required int x,
+    required double y,
+  }) : super(
+          x: x,
+          barRods: [
+            BarChartRodData(
+              toY: y,
+              gradient: const LinearGradient(colors: [
+                Colors.red,
+                Colors.grey,
+              ]),
+            ),
+          ],
+          showingTooltipIndicators: [0],
+        );
 }
