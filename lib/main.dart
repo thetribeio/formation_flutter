@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Pokedex"),
         ),
-        body: const PokemonPage(
+        body: PokemonPage(
           pokemon: Pokemon(
             id: 1,
             name: "Bulbizarre",
